@@ -8,10 +8,10 @@ import BackCard from "@/../public/bg-card-back.png";
 import CardLogo from "@/../public/card-logo.svg";
 export default function HomePage() {
   const [cardHoldername, setCardHolderName] = useState<string>("");
-  const [cardNumber, setCardNumber] = useState<number>(0);
-  const [months, setMonths] = useState<number>(0);
-  const [year, setYear] = useState<number>(0);
-  const [cvc, setCVC] = useState<number>(0);
+  const [cardNumber, setCardNumber] = useState<string>("");
+  const [months, setMonths] = useState<string>("");
+  const [year, setYear] = useState<string>("");
+  const [cvc, setCVC] = useState<string>("");
 
   return (
     <main className="w-full max-h-screen flex relative">
@@ -19,7 +19,7 @@ export default function HomePage() {
         <Image src={DesktopBg} alt="Desktop Background" className="h-screen" />
       </div>
       <div className="absolute top-32  left-32">
-        <Image src={FrontCard} alt="front side of the card"></Image>
+        <Image src={FrontCard} alt="front side of the card" />
 
         {/* <Image src={CardLogo} alt="CardLogo" className="top-32" /> */}
       </div>
@@ -54,7 +54,12 @@ export default function HomePage() {
             </label>
             <input
               type="number"
-              onChange={(e) => setCardNumber(e.target.valueAsNumber)}
+              maxLength={19}
+              value={cardNumber
+                .replace(/\s/g, "")
+                .replace(/(\d{4})/g, "$1 ")
+                .trim()}
+              onChange={(e) => setCardNumber(e.target.value)}
               placeholder="e.g. 1234 5678 9123 0000"
               className="py-1 text-black px-2 border border-slate-300 rounded-md"
             />
@@ -72,14 +77,16 @@ export default function HomePage() {
               <div className="grid grid-cols-2 gap-2">
                 <input
                   type="number"
-                  onChange={(e) => setMonths(e.target.valueAsNumber)}
+                  onChange={(e) => setMonths(e.target.value)}
                   placeholder="MM"
+                  maxLength={2}
                   className="py-1 text-black px-2 border border-slate-300 rounded-md"
                 />
                 <input
                   type="number"
-                  onChange={(e) => setYear(e.target.valueAsNumber)}
+                  onChange={(e) => setYear(e.target.value)}
                   placeholder="YY"
+                  maxLength={4}
                   className="py-1 text-black px-2 border border-slate-300 rounded-md"
                 />
               </div>
@@ -95,8 +102,9 @@ export default function HomePage() {
 
               <input
                 type="number"
-                onChange={(e) => setCVC(e.target.valueAsNumber)}
+                onChange={(e) => setCVC(e.target.value)}
                 placeholder="e.g. 123"
+                maxLength={3}
                 className="py-1 text-black px-2 border border-slate-300 rounded-md"
               />
             </div>

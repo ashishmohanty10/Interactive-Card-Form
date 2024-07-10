@@ -120,7 +120,7 @@ export default function HomePage() {
       {/* backside of the card */}
       <div className="absolute top-8 right-4 xl:top-96 xl:left-44 w-[350px] xl:w-fit">
         <Image src={BackCard} alt="Backside of the card" />
-        <span className="absolute text-black z-20 top-[5.1rem] right-11 xl:top-[6.8rem] xl:right-12 w-fit">
+        <span className="absolute text-white z-20 top-[5.1rem] right-11 xl:top-[6.8rem] xl:right-12 w-fit">
           {cvc ? cvc : "123"}
         </span>
       </div>

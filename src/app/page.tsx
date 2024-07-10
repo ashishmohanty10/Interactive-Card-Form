@@ -280,7 +280,7 @@ function Thankyou({ setConfirm }: ThankyouProps) {
       <Image src={Tick} alt="Complete sign" className="mb-5" />
       <p className="text-slate-950 font-semibold">THANK YOU</p>
       <p className="text-sm text-slate-600 font-medium">
-        We've added your card details
+        We have added your card details
       </p>
       <button
         onClick={() => setConfirm(false)}
